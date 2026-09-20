@@ -4039,6 +4039,7 @@ ApplicationWindow {
                             Layout.fillWidth: true
                         }
                         PanelHeaderControls {
+                            id: propertiesHeaderControls
                             panelId: "panel.properties"
                             stackRow: root.dockStackRow("panel.properties")
                             stackLength: root.dockRightStack.length
@@ -4149,6 +4150,7 @@ ApplicationWindow {
                             Layout.fillWidth: true
                         }
                         PanelHeaderControls {
+                            id: navigatorHeaderControls
                             panelId: "panel.navigator"
                             stackRow: root.dockStackRow("panel.navigator")
                             stackLength: root.dockRightStack.length
@@ -4235,6 +4237,7 @@ ApplicationWindow {
                             Layout.fillWidth: true
                         }
                         PanelHeaderControls {
+                            id: swatchesHeaderControls
                             panelId: "panel.swatches"
                             stackRow: root.dockStackRow("panel.swatches")
                             stackLength: root.dockRightStack.length
@@ -4316,6 +4319,7 @@ ApplicationWindow {
                             Layout.fillWidth: true
                         }
                         PanelHeaderControls {
+                            id: layersHeaderControls
                             panelId: "panel.layers"
                             stackRow: root.dockStackRow("panel.layers")
                             stackLength: root.dockRightStack.length
@@ -4426,6 +4430,7 @@ ApplicationWindow {
                             Layout.fillWidth: true
                         }
                         PanelHeaderControls {
+                            id: historyHeaderControls
                             panelId: "panel.history"
                             stackRow: root.dockStackRow("panel.history")
                             stackLength: root.dockRightStack.length
@@ -4530,6 +4535,7 @@ ApplicationWindow {
         id: openFileDialog
         title: qsTr("Open Document")
         fileMode: FileDialog.OpenFile
+        options: FileDialog.DontUseNativeDialog
         nameFilters: [
             qsTr("All supported (*.ptx *.png *.jpg *.jpeg *.webp *.tif *.tiff *.bmp *.gif *.psd)"),
             qsTr("PhotoTux documents (*.ptx)"),
@@ -4550,6 +4556,7 @@ ApplicationWindow {
         id: embedIccFileDialog
         title: qsTr("Embed ICC Profile")
         fileMode: FileDialog.OpenFile
+        options: FileDialog.DontUseNativeDialog
         nameFilters: [
             qsTr("ICC profiles (*.icc *.icm)"),
             qsTr("All files (*)")
@@ -4564,6 +4571,7 @@ ApplicationWindow {
         id: saveFileDialog
         title: qsTr("Save PhotoTux Document")
         fileMode: FileDialog.SaveFile
+        options: FileDialog.DontUseNativeDialog
         nameFilters: [ qsTr("PhotoTux documents (*.ptx)") ]
         defaultSuffix: "ptx"
         onAccepted: {
@@ -4581,6 +4589,7 @@ ApplicationWindow {
         id: exportFileDialog
         title: qsTr("Export Image")
         fileMode: FileDialog.SaveFile
+        options: FileDialog.DontUseNativeDialog
         // From `RasterFormat::ALL`, not written out here. The list that used
         // to live in this file offered four of the six formats the writer
         // handles, so BMP and GIF could be opened and never saved again, and

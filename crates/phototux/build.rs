@@ -71,9 +71,18 @@ fn main() {
         "Debug"
     };
     let build_type_arg = format!("-DCMAKE_BUILD_TYPE={build_type}");
-    let qt_prefix_arg = format!("-DCMAKE_PREFIX_PATH={}", qt_prefix.display());
+    let cmake_prefix = env::var_os("CMAKE_PREFIX_PATH")
+        .map(PathBuf::from)
+        .unwrap_or_default();
+    let cmake_prefix = if cmake_prefix.as_os_str().is_empty() {
+        qt_prefix.display().to_string()
+    } else {
+        format!("{}:{}", cmake_prefix.display(), qt_prefix.display())
+    };
+    let qt_prefix_arg = format!("-DCMAKE_PREFIX_PATH={cmake_prefix}");
 
     println!("cargo:rerun-if-env-changed=QMAKE");
+    println!("cargo:rerun-if-env-changed=CMAKE_PREFIX_PATH");
     println!("cargo:rerun-if-changed=qml-aot/CMakeLists.txt");
     println!("cargo:rerun-if-changed=qml-aot/phototux_qml_anchor.cpp");
     // Watch the directory, not a name list: a per-file list silently stops

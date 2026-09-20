@@ -30,11 +30,6 @@ ToolTip {
     delay: 450
     timeout: 8000
     padding: Theme.spaceSm
-    /// Tool tips are chrome about chrome: the control they describe already
-    /// carries the same string as its `Accessible.name`, so reading it twice
-    /// is noise.
-    Accessible.ignored: true
-
     background: Rectangle {
         color: Theme.surfaceRaised
         border.color: Theme.borderEffective
